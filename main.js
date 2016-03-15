@@ -2,32 +2,32 @@ var data = [
   [{
     "Percent":"100",
     "gender":"Male", 
-    "color":"blue"
+    "color":"#00D0FE"
   }, 
   {
     "Percent":"50",
     "gender":"Female", 
-    "color":"red"
+    "color":"#EA83DB"
   }], 
   [{
     "Percent":"60",
     "gender":"Male",
-    "color":"red"
+    "color":"#00D0FE"
   },
   {
     "Percent":"40",
     "gender":"Female", 
-    "color":"red"
+    "color":"#EA83DB"
   }],
   [{
     "Percent":"90",
     "gender":"Male",
-    "color":"red"
+    "color":"#00D0FE"
   },
   {
     "Percent":"20",
     "gender":"Female", 
-    "color":"red"
+    "color":"#EA83DB"
   }]
 ];
 
@@ -75,17 +75,14 @@ var svg = d3.select('#bar')
   
   update(data[0]); // update(data[1]);
 
-  
-
   svg.append("text")
     .attr("x", (width / 2 - margin.left))
     .attr("y", 0 - (margin.top / 2))
     .attr("text-anchor", "left")
     
     function update(data) {
+        console.log(data)
        svg.selectAll('.chart')
-        // .data(data)
-        // console.log(data[1],data[2])
         .data(data)
         .enter()
         .append('rect')
@@ -94,5 +91,9 @@ var svg = d3.select('#bar')
         .attr('y', function(d,i){return -1 + margin.top + y.rangeBand() * i - margin.top;})
         .attr('height', 40)
         .attr('width', function(d) { return x(d.Percent) })
-        .attr('fill', function(d) { return d.color }) //changed to d.color from x(d.color) as you don't need to transform the color value 
+        .attr('fill', function(d) { return d.color })  
+        //transition
+        // .transition()
+        // .duration(100)
+        // .ease("linear")
     }

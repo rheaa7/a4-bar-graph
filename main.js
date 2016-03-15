@@ -1,5 +1,5 @@
 var data = [
-  {
+  [{
     "Percent":"100",
     "gender":"Male", 
     "color":"blue"
@@ -8,8 +8,8 @@ var data = [
     "Percent":"50",
     "gender":"Female", 
     "color":"red"
-  }, 
-  {
+  }], 
+  [{
     "Percent":"60",
     "gender":"Male",
     "color":"red"
@@ -18,8 +18,8 @@ var data = [
     "Percent":"40",
     "gender":"Female", 
     "color":"red"
-  },
-  {
+  }],
+  [{
     "Percent":"90",
     "gender":"Male",
     "color":"red"
@@ -28,7 +28,7 @@ var data = [
     "Percent":"20",
     "gender":"Female", 
     "color":"red"
-  }
+  }]
 ];
 
 var margin = {top: 60, right: 40, bottom: 50, left: 50},
@@ -72,21 +72,27 @@ var svg = d3.select('#bar')
   svg.append('g')
     .attr('class', 'y-axis axis')
     .call(yAxis)
+  
+  update(data[0]); // update(data[1]);
 
-  svg.selectAll('.chart')
-    // .data(data)
-    // console.log(data[1],data[2])
-    .data(data[0], data[1])
-    .enter()
-    .append('rect')
-    .attr('class', 'bar')
-    .attr('x', 1)
-    .attr('y', function(d,i){return -1 + margin.top + y.rangeBand() * i - margin.top;})
-    .attr('height', 40)
-    .attr('width', function(d) { return x(d.Percent) })
-    .attr('fill', function(d) { return d.color }) //changed to d.color from x(d.color) as you don't need to transform the color value
+  
 
   svg.append("text")
     .attr("x", (width / 2 - margin.left))
     .attr("y", 0 - (margin.top / 2))
     .attr("text-anchor", "left")
+    
+    function update(data) {
+       svg.selectAll('.chart')
+        // .data(data)
+        // console.log(data[1],data[2])
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('x', 1)
+        .attr('y', function(d,i){return -1 + margin.top + y.rangeBand() * i - margin.top;})
+        .attr('height', 40)
+        .attr('width', function(d) { return x(d.Percent) })
+        .attr('fill', function(d) { return d.color }) //changed to d.color from x(d.color) as you don't need to transform the color value 
+    }

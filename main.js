@@ -41,7 +41,7 @@ var x = d3.scale.linear()
   
 
 var y = d3.scale.ordinal()
-  .domain((data[0],data[1]).map(function(d) {return d.gender;}))
+  .domain(data.map(function(d) {return d.gender;}))
   .rangeBands([0, height - margin.top - margin.bottom]); /// is this right?
 
 var xAxis = d3.svg.axis()

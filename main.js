@@ -75,6 +75,7 @@ var svg = d3.select('#bar')
 
   svg.selectAll('.chart')
     // .data(data)
+    console.log(data[1])
     .data(data[1][2])
     .enter()
     .append('rect')

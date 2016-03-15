@@ -75,7 +75,7 @@ var svg = d3.select('#bar')
 
   svg.selectAll('.chart')
     // .data(data)
-    .data(data[0][1])
+    .data(data[1][2])
     .enter()
     .append('rect')
     .attr('class', 'bar')

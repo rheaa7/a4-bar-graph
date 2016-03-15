@@ -36,7 +36,7 @@ var margin = {top: 60, right: 40, bottom: 50, left: 50},
     height = 320 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-  .domain([0, d3.max((data[0],data[1]), function(d) { return +d.Percent;})])
+  .domain([0, d3.max(data, function(d) { return +d.Percent;})])
   .range([0, width - margin.left - margin.right]); 
   
 
